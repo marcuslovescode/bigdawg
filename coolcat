@@ -1,0 +1,74 @@
+
+def clean_board():
+    board = [[] for num in range(0, 3)]
+    i = 1
+    nums = [z for z in range(1, 10)]
+
+    for num in range(0, 3):
+        c = num
+        if c < 2:
+            board[num] = '     |     |    \n  {}  |  {}  |  {}  \n_____|_____|_____'.format(
+                i, i+1, i+2)
+        elif c == 2:
+            board[num] = '     |     |    \n  {}  |  {}  |  {}  \n     |     |'.format(i, i+1, i+2)
+        i += 3
+
+    return board
+
+
+z = clean_board()
+for a in z:
+    print(a)
+
+plays = [z for z in range(1, 10)]
+
+
+def board_update(user_input, token):
+
+    board = [[] for num in range(0, 4)]
+    inp = user_input
+    indx = inp - 1
+    plays[indx] = token
+
+    for row in range(1, 4):
+        if row == 0:
+            continue
+        if row == 1:
+            board[row] = '     |     |    \n  {}  |  {}  |  {}  \n_____|_____|_____'.format(
+                plays[0], plays[1], plays[2])
+
+        elif row == 2:
+            board[row] = '     |     |    \n  {}  |  {}  |  {}  \n_____|_____|_____'.format(
+                plays[3], plays[4], plays[5])
+        elif row == 3:
+            board[row] = '     |     |    \n  {}  |  {}  |  {}  \n     |     |'.format(
+                plays[6], plays[7], plays[8])
+
+    for a in board[1:4]:
+        print(a)
+
+
+class Player:
+    def __init__(self, token):
+        self.token = token
+
+    def get_token(self):
+        return self.token
+
+
+def greeting():
+
+    print('Hello, will you be playing alone today?')
+    for i in range(3):
+        try:
+
+            input('Yay or nay: ')
+            'yes'
+            answer_2 = input('YAYAYA')
+
+        except EOFError:
+            print('Nope')
+            pass
+
+
+greeting()
