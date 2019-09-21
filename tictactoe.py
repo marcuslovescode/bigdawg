@@ -162,5 +162,4 @@ def game_time():
             return False
 
 
-print("Erik is a bitch!")
 game_time()
